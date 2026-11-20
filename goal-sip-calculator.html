@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1 Crore Target SIP Calculator India | WealthHub</title>
+  <meta name="description" content="Calculate monthly SIP needed for ₹1 Crore." />
+  <link rel="canonical" href="https://yourdomain.in/goal-sip-calculator.html" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <a href="index.html" class="font-extrabold text-lg text-emerald-700">₹ WealthHub India</a>
+      <nav aria-label="Main Navigation" class="flex flex-wrap gap-1.5 text-xs sm:text-sm font-medium">
+        <a href="index.html" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100">Ultimate AI & BA II Pro Hub</a>
+<a href="goal-sip-calculator.html" class="px-2.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 font-semibold">Goal SIP</a>
+<a href="loan-prepayment-calculator.html" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100">Prepayment</a>
+<a href="lumpsum-calculator.html" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100">Lumpsum</a>
+<a href="emi-calculator.html" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100">EMI</a>
+<a href="ppf-calculator.html" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100">PPF</a>
+<a href="fd-calculator.html" class="px-2.5 py-1.5 rounded-lg hover:bg-slate-100">FD</a>
+      </nav>
+    </div>
+  </header>
+  <main class="max-w-5xl mx-auto px-4 py-8 flex-1 w-full">
+    <div class="mb-6">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Target Corpus & 1 Crore SIP Calculator</h1>
+      <p class="text-slate-600 text-sm mt-1">Plan your monthly SIP toward ₹1 Crore and beyond.</p>
+    </div>
+    <div id="toolRoot"></div>
+    <article class="mt-8 bg-white p-6 rounded-2xl border border-slate-200 space-y-3 text-sm text-slate-600 leading-relaxed">
+      <h2 class='text-lg font-bold text-slate-900'>Goal-Based Investing</h2><p>Use the Ultimate AI & BA II Pro Hub on the homepage for TVM, Cash Flows, Bonds, Depreciation, Statistics, and FIRE targets.</p>
+    </article>
+  </main>
+  <footer class="bg-slate-900 text-slate-300 mt-12 py-8 text-xs">
+    <div class="max-w-6xl mx-auto px-4 flex flex-wrap justify-between gap-4">
+      <p>© 2026 WealthHub India. Educational Use Only.</p>
+      <div class="flex flex-wrap gap-4">
+        <a href="about.html" class="hover:text-white">About Us</a>
+        <a href="contact.html" class="hover:text-white">Contact</a>
+        <a href="privacy-policy.html" class="hover:text-white">Privacy Policy</a>
+        <a href="disclaimer.html" class="hover:text-white">Disclaimer</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const fmt = (n) => '₹' + Math.round(n).toLocaleString('en-IN');
+    const TOOL = "lumpsum";
+    const configs = {
+      lumpsum: { aLabel: "One-Time Investment (₹)", aMin: 5000, aMax: 10000000, aStep: 5000, aVal: 200000, rLabel: "Expected Return (% p.a.)", rMin: 5, rMax: 22, rStep: 0.5, rVal: 12, yLabel: "Duration (Years)", yMin: 1, yMax: 35, yVal: 10 },
+      emi: { aLabel: "Loan Amount (₹)", aMin: 100000, aMax: 50000000, aStep: 50000, aVal: 3000000, rLabel: "Interest Rate (% p.a.)", rMin: 6, rMax: 18, rStep: 0.05, rVal: 8.75, yLabel: "Tenure (Years)", yMin: 1, yMax: 30, yVal: 20 },
+      ppf: { aLabel: "Yearly PPF Deposit (₹)", aMin: 500, aMax: 150000, aStep: 500, aVal: 150000, rLabel: "PPF Rate (% p.a.)", rMin: 6, rMax: 9, rStep: 0.1, rVal: 7.1, yLabel: "Tenure (Years)", yMin: 15, yMax: 35, yVal: 15 },
+      fd: { aLabel: "FD Deposit Amount (₹)", aMin: 5000, aMax: 10000000, aStep: 5000, aVal: 500000, rLabel: "FD Interest Rate (% p.a.)", rMin: 3, rMax: 11, rStep: 0.05, rVal: 7.25, yLabel: "Tenure (Years)", yMin: 1, yMax: 10, yVal: 5 }
+    };
+    const c = configs[TOOL];
+    document.getElementById('toolRoot').innerHTML = `
+      <div class="grid md:grid-cols-2 gap-6 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <div class="space-y-5">
+          <div><div class="flex justify-between text-sm font-semibold mb-1"><label>${c.aLabel}</label><span id="vA" class="text-emerald-700"></span></div><input id="inA" type="range" min="${c.aMin}" max="${c.aMax}" step="${c.aStep}" value="${c.aVal}" class="w-full accent-emerald-600" /></div>
+          <div><div class="flex justify-between text-sm font-semibold mb-1"><label>${c.rLabel}</label><span id="vR" class="text-emerald-700"></span></div><input id="inR" type="range" min="${c.rMin}" max="${c.rMax}" step="${c.rStep}" value="${c.rVal}" class="w-full accent-emerald-600" /></div>
+          <div><div class="flex justify-between text-sm font-semibold mb-1"><label>${c.yLabel}</label><span id="vY" class="text-emerald-700"></span></div><input id="inY" type="range" min="${c.yMin}" max="${c.yMax}" step="1" value="${c.yVal}" class="w-full accent-emerald-600" /></div>
+        </div>
+        <div class="bg-slate-900 text-white p-6 rounded-xl flex flex-col justify-between space-y-4">
+          <div><p id="resTitle" class="text-xs uppercase tracking-wider text-emerald-400 font-semibold"></p><p id="resMain" class="text-3xl sm:text-4xl font-extrabold mt-1"></p></div>
+          <div class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-800 text-sm">
+            <div><p id="sub1L" class="text-slate-400 text-xs"></p><p id="sub1V" class="font-bold text-base"></p></div>
+            <div><p id="sub2L" class="text-slate-400 text-xs"></p><p id="sub2V" class="font-bold text-base text-emerald-400"></p></div>
+          </div>
+        </div>
+      </div>`;
+    function runCalc() {
+      const A = +document.getElementById('inA').value, R = +document.getElementById('inR').value, Y = +document.getElementById('inY').value;
+      document.getElementById('vA').textContent = fmt(A);
+      document.getElementById('vR').textContent = R + '%';
+      document.getElementById('vY').textContent = Y + ' Years';
+      if (TOOL === 'lumpsum') {
+        const fv = A * Math.pow(1 + R / 100, Y);
+        document.getElementById('resTitle').textContent = 'Estimated Future Value';
+        document.getElementById('resMain').textContent = fmt(fv);
+        document.getElementById('sub1L').textContent = 'Invested'; document.getElementById('sub1V').textContent = fmt(A);
+        document.getElementById('sub2L').textContent = 'Wealth Gain'; document.getElementById('sub2V').textContent = fmt(fv - A);
+      } else if (TOOL === 'emi') {
+        const r = R / 12 / 100, n = Y * 12, emi = (A * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+        document.getElementById('resTitle').textContent = 'Monthly Loan EMI';
+        document.getElementById('resMain').textContent = fmt(emi) + ' / mo';
+        document.getElementById('sub1L').textContent = 'Principal'; document.getElementById('sub1V').textContent = fmt(A);
+        document.getElementById('sub2L').textContent = 'Total Interest'; document.getElementById('sub2V').textContent = fmt(emi * n - A);
+      } else if (TOOL === 'ppf') {
+        let bal = 0; for (let i = 0; i < Y; i++) bal = (bal + A) * (1 + R / 100);
+        document.getElementById('resTitle').textContent = 'Tax-Free PPF Maturity';
+        document.getElementById('resMain').textContent = fmt(bal);
+        document.getElementById('sub1L').textContent = 'Total Deposited'; document.getElementById('sub1V').textContent = fmt(A * Y);
+        document.getElementById('sub2L').textContent = 'Tax-Free Interest'; document.getElementById('sub2V').textContent = fmt(bal - A * Y);
+      } else if (TOOL === 'fd') {
+        const mat = A * Math.pow(1 + (R / 100) / 4, 4 * Y);
+        document.getElementById('resTitle').textContent = 'FD Maturity Amount (Quarterly Comp.)';
+        document.getElementById('resMain').textContent = fmt(mat);
+        document.getElementById('sub1L').textContent = 'Deposit'; document.getElementById('sub1V').textContent = fmt(A);
+        document.getElementById('sub2L').textContent = 'Total Interest'; document.getElementById('sub2V').textContent = fmt(mat - A);
+      }
+    }
+    ['inA', 'inR', 'inY'].forEach(id => document.getElementById(id).addEventListener('input', runCalc));
+    runCalc();
+  </script>
+</body>
+</html>
